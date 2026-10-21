@@ -1,4 +1,5 @@
 import React from 'react'
+import CircularActionButton from './CircularActionButton'
 
 export default function Pagination({ page, totalPages, onPageChange }) {
   if (totalPages <= 1) return null
@@ -12,22 +13,20 @@ export default function Pagination({ page, totalPages, onPageChange }) {
   }
 
   return (
-    <div className="pagination">
-      <button onClick={() => onPageChange(page - 1)} disabled={page === 1}>
-        Anterior
-      </button>
+    <div className="pagination" aria-label="Paginación">
+      <CircularActionButton action="previous" className="pagination-button" label="Página anterior" title="Página anterior" onClick={() => onPageChange(page - 1)} disabled={page === 1} />
       {pages.map(num => (
-        <button
+        <CircularActionButton
           key={num}
-          className={num === page ? 'active' : ''}
+          action="page"
+          className={`pagination-button${num === page ? ' active' : ''}`}
+          label={`Ir a la página ${num}`}
+          title={`Página ${num}`}
+          aria-current={num === page ? 'page' : undefined}
           onClick={() => onPageChange(num)}
-        >
-          {num}
-        </button>
+        />
       ))}
-      <button onClick={() => onPageChange(page + 1)} disabled={page === totalPages}>
-        Siguiente
-      </button>
+      <CircularActionButton action="next" className="pagination-button" label="Página siguiente" title="Página siguiente" onClick={() => onPageChange(page + 1)} disabled={page === totalPages} />
     </div>
   )
 }

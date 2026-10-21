@@ -1,3 +1,6 @@
 node_modules/
 .DS_Store
 .env
+storage/pending-solicitudes.json
+storage/pending-solicitudes/
+storage/auth-sessions.json

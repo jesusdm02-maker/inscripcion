@@ -1,21 +1,18 @@
 import React from 'react'
 import DashboardSummary from '../components/DashboardSummary'
-import HealthStatus from '../components/HealthStatus'
 
 export default function DashboardPage(){
   return (
-    <div className="page-content">
-      <div className="dashboard-intro">
+    <div className="page-content dashboard-page">
+      <div className="dashboard-header">
         <div>
-          <h2>Resumen general</h2>
-          <p>Monitorea la conexión del backend y el estado global de inscripciones.</p>
+          <span className="dashboard-eyebrow">GESTIÓN ESCOLAR</span>
+          <h1>Panel de preinscripción</h1>
+          <p>Resumen de solicitudes, alumnos y distribución de matrícula.</p>
         </div>
+        <span className="dashboard-live-indicator"><span /> Datos del sistema</span>
       </div>
-
-      <div className="card-grid">
-        <DashboardSummary />
-        <HealthStatus />
-      </div>
+      <DashboardSummary />
     </div>
   )
 }
